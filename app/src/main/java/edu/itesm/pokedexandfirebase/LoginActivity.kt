@@ -29,6 +29,14 @@ class LoginActivity : AppCompatActivity() {
         setLoginRegister() //sigue en la siguiente sección.
     }
 
+    override fun onStart(){
+        super.onStart()
+        val usuarioActivo = auth.currentUser
+        if(usuarioActivo != null){
+            startActivity(Intent(this, MainActivity::class.java))
+        }
+    }
+
     private fun setLoginRegister(){
         bind.registerbtn.setOnClickListener {
             if (bind.correo.text.isNotEmpty() && bind.password.text.isNotEmpty()){
